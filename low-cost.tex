@@ -1,0 +1,165 @@
+\documentclass[10pt,conference,compsocconf,letterpaper]{IEEEtran}
+
+\makeatletter
+\def\ps@headings{%
+\def\@oddhead{\mbox{}\scriptsize\rightmark \hfil \thepage}%
+\def\@evenhead{\scriptsize\thepage \hfil \leftmark\mbox{}}%
+\def\@oddfoot{}%
+\def\@evenfoot{}}
+\makeatother
+
+\pagestyle{headings}
+\usepackage{graphicx}
+\usepackage[noadjust]{cite}
+\usepackage{tabularx}
+\usepackage{times}
+\usepackage{alltt}
+\usepackage{verbatim}
+\usepackage{moreverb}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\ifCLASSINFOpdf \else \fi
+\usepackage{url}
+\usepackage{epsfig}
+\usepackage{subfigure}
+\usepackage{multirow}
+%\usepackage{slashbox}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{mathrsfs}
+\usepackage{amsthm}
+\usepackage{cases}
+\hyphenation{op-tical net-works semi-conduc-tor}
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+
+\begin{document}
+
+\title{Quality Evaluation of Crowdsensed Fingerprints for Indoor Localization}
+
+%
+%\author{\IEEEauthorblockN{Mei Wang$^1$, Xiaohua Tian$^{2,3}$, Xinbing Wang$^{1,3}$}
+%\IEEEauthorblockA{
+%1. School of Electronic, Info. \& Electrical Engineering, Shanghai Jiao Tong University, China\\
+%2. Dept. of Electronic Engineering, Shanghai Jiao Tong University, China\\
+%3. National Mobile Communications Research Laboratory, Southeast University, China}
+% \{mary1994, xtian, xwang8\}@sjtu.edu.cn}
+%
+
+\maketitle
+
+\newtheorem{Lemma}{Lemma}
+
+\begin{abstract}
+
+\end{abstract}
+
+
+\section{Introduction}\label{sectionintro}
+The past decade has witnessed a flourishing of indoor localization systems based on wireless techniques \cite{ rsscsi}, where the fingerprinting based methodology has been widely adopted due to its convenient deployability \cite{ mobicom04, horus }. The fingerprinting based indoor localization system has two phases: In the offline phase, the site surveyor observes the received signal strength (RSS) of Wi-Fi access points (APs) termed as RSS fingerprints at each reference point, and submit the fingerprints and the location information of the reference point to the localization database; in the online phase, a user needs localization service could submit the observed fingerprints to the database, which then returns the location of the reference point that matches the fingerprints best as the estimated location of the user.   
+
+The fingerprinting based method utilizes Wi-Fi APs widely existing in buildings and has no need for other dedicated infrastructure; however, the site survey in the offline phase requires substantial efforts, which is hardly accomplished by any single entity. The recent advances of fingerprinting localization systems utilize mobile crowdsensing approach to collect fingerprints \cite{ wen2015fundamental, Chenshu14, luo2014piloc, shen2013walkie, ez10, Chintalapudi10}. Mobile crowdsensing is a cost-effective approach to collect large scale data for mobile applications, where individuals with hand-held mobile devices collectively contribute sensing data so that information of certain events could be retrieved \cite{crowdsensing, postedpricing}. Although sensing participants could receive certain rewards for the efforts and resources spent on the sensing activity, the cost of mobile crowdsensing is still much lower than deploying the dedicated sensing networks \cite{ crowdsensing}. 
+
+
+As the crowdsensing data are collected by unprofessional participants with non-dedicated equipment, the sensing data obtained are usually with considerable noise. The quality of the sensing data is the crux for evaluating contribution of the participants, which is the vitally important for effective utilizing rewards to incentivize participants to accomplish sensing tasks satisfactorily. However, how to evaluate the quality of the crowdsensing data is a challenging issue, because there is no ground truth for the collected data to be compared with. Efforts have been made to evaluate the crowdsensing data quality \cite{ Lbs2, Crowdloc14}, and the task allocation scheme \cite{ Taskselection15, recruit} and incentive mechanisms considering the data quality are proposed \cite{ Pengdan15, noise, incentive, Incentive2}. 
+
+While the efforts have been made to study quality evaluation of crowdsensing data for mobile applications in general framework \cite{}, how to evaluate the quality of fingerprints with crowdsensing approach in the indoor localization case is still not fully investigated, which is the focus of this work. Our motivation is two-fold. On one hand, the existing work for data quality evaluation in the literature \cite{} can not be applied to the indoor localization system in practice; on the other hand, we want to find out how the very nature of the indoor localization system could facilitate evaluating quality of crowdsensed fingerprints. Our contributions are as following.
+
+First, ……
+
+Second, …….
+
+Third, ……
+
+
+
+
+\section{Related Work \label{sectionrelatedwork}}
+Many related work has been done. About the basic theory of online learning, \cite{ICML-OLA} provided an introduction of online convex programming and an effective algorithm: Generalized Infinitesimal Gradient Ascent for this problem, making for the fundamental construction of online learning. However, it only derives a general model aiming at online convex optimization, with a number of details to be modified and renovated in specific situations. \cite{OLServey} comprehensively displayed online convex optimizing theory, on which our online learning researches are predicated.
+
+With regard to our particular problem setting: minimizing the overall regret with a fixed upper limit of budget,\cite{low-cost} presented an all-round dissection of it. \cite{low-cost} firstly utilized the classical online learning algorithm: Follow the Regularized Leader(FTRL) to update steadily the hypothesis in every round the mechanism should give, in light of information the mechanism has acquired in previous rounds about offered hypotheses and suffered loss. Then \cite{low-cost} embedded FTRL in their main algorithm: Mechanism for no-regret data-purchasing problem, which resolved the problem with an upper regret bound $O(T/\sqrt{B})$.
+
+In terms of concrete techniques applied in \cite{low-cost}, importance weighting is an important one, playing a crucial role in estimating unbiasedly the cumulative loss suffered until the current round. This technique is also a research point in our work, and we focus on providing an alternative form of the unbiased estimator to reach better regret bound. One specific application of importance weighting methods--binary classification is shown and analyzed in \cite{importance weight}.
+
+Moreover, a bottleneck in solving this problem is the complex form of our objective function and budget constraint, with unknown distributions of costs in each round and an inequality containing integral. \cite{low-cost} made use of inequality zooming methods to clear the integral part in budget constraint, rendering a more computable convex optimizing problem. However, this method can only derive an approximated solution and the corresponding bound may not be tight enough. In our work we try to get access to the accurate solution of this problem, by means of calculus variation. \cite{calculus-variation} illustrates the applicability and methods of calculus variation in detail. A concrete example taking advantage of it lies in \cite{conduct truthful survey}. \cite{conduct truthful survey} dealt with the problem that minimizing the variance of estimator with a given price distribution and a fixed budget by calculus variation. Nevertheless, it concentrated on the offline situation, deviating from our online background.
+
+
+
+\section{Localization Model}
+
+\section{Low-cost data purchasing problem}
+ In many situations, we could not get access to all the data for both the reason that the data has a cost and our budget is limited. In this section, we will define the problem of thedesigning of the effective mechanism to acquire the RSS information collected by the crowds. However, the mechanism have no means to know either the data is good enough for our localization or there will be a better one coming after. We implement the online machine learning algorithm in our mechanism.
+\subsection{Preliminaries and basic assumption}
+We first define the loss function according to the localization model above.
+\[f_t(h_t)=\]
+ After we acquire the loss function, we give the defininition of the regret function.
+\[R(T)=\sum_{t=1}^Tf_t(h_t)-\min_{h^*\in H}\sum_{t=1}^Tf_t(h^*_t)\]
+where $h^*$ is the optimal choice, causing the least loss in our solution space $H$.
+We also make some assumptions for this problem
+\begin{enumerate}
+\item 
+\item 
+\item 
+\end{enumerate}
+\subsection{Online Learning Algorithms}
+We will here use the classical Follow the Regularized Leader(FoRL) algorithm to work as the Online Algorithms. The FoRL has a upper bound of regret of $O(\sqrt{T})$, which ensures that the average regret tends to zero when.There are many kinds of other Online Algorithms which can be found in \ref{OLServey}, etc. The FoRL is described in \ref{}.
+\subsection{Problem formulation}
+The problem can be described as follows. 
+\begin{enumerate}
+\item a sequence of data ${d_1,,,d_T}$ coming in time $1,,,,,T$ with each data possessing a posted price $c_t$, $c_t\in [0,M]$. 
+\item The mechanism post a price $p_t$ according to a probablity $g_t(p_t)$. 
+\item If the $p>c_t$ agent accepted the price, the mechanism get the loss function and send it back to the OLA and the mechanism will pay for the posted price $c_t$. If the agent rejected the price, the mechanism would send a null data to the OLA . 
+\end{enumerate}
+\subsection{Importance Weighting technique}
+In tradational online learning problem, all the data will be used, and we can consider . In out low-cost purchasing problem, not all the loss function are used, and the estimation of loss is $E(\sum_{t=0}^T\delta_t f_t)=\sum_{t=0}^T q_t f_t$, where $\delta_t$ is the function showing whether the data is procured. Noticing that the definition of regret still includes all the loss, in order to get an unbiased estimator, we define
+\begin{numcases}{lf_t(h)=}
+  \frac{f_t(h_t)}{q_t} & if the is  \\
+  0 & else 
+  \end{numcases}
+\subsection{online batch to conversion}
+We give our final results by averaging every hypothesis $h_t$ acquired in each 
+Details will be added later.
+\section{The regret minimization senario}
+In this senario, the mechanism has a fixed budget. The main purpose of the mechanism is to get a high accuracy of localization informaiton, which is consistent with our definition of loss function and regret. 
+\subsection{Upper bound of regret}
+We will first find the upper bound of the regret. \cite{} gives a quite well estimation as shown in the following lemma
+\begin{Lemma}{}
+The regret bound of problem \ref{} using the OLA of FoRL is bounded by
+\[R(T)=\frac{\beta}{\eta}+E(\sum_{t=1}^T\frac{\Delta_{h_t,f_t}^2}{q_t})\]
+\end{Lemma}
+\subsection{Randomized posted price setting}
+There still many details be determined here.
+\subsection{The optmization problem}
+Now we can change the problem into a more single form.
+\[\min \sum_{t=1}^T\frac{\Delta_{h_t,f_t}^2}{q_{c_t}}\]
+\[s.t. \sum_{t=0}^T\int_{c_t}^Mxdq(x)\leq B\]
+\section{The budget minimization senario}
+In this senario, the mechanism do not have a certain amount of budget, instead, an upper bound of regret $R_{min}$ is required as a constraint and the optimization target changes to the minimum of budget.
+\[\min E(B)\]
+\[s.t. R(T)\leq R_{min}\]
+\section{Experiments and Simulations}
+
+
+
+\section{Conclusion and Future Work}\label{concandfuture}
+
+
+\bibliographystyle{IEEEtran}
+
+
+%\bibliography{bibi}
+
+\begin{thebibliography}{99}
+
+\bibitem{rsscsi}
+Z.~Yang, Z.~Zhou and Y.~Liu, ``From RSSI to CSI: Indoor localization via channel response,'' \emph{ACM Comput. Surv.}, vol.~46, no.~2, pp.1-32, 2013.
+
+
+
+
+
+
+\end{thebibliography}
+
+\end{document}
