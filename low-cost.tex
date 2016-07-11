@@ -76,14 +76,21 @@ Third, ……
 
 
 \section{Related Work \label{sectionrelatedwork}}
-Many related work has been done. About the basic theory of online learning, \cite{ICML-OLA} provided an introduction of online convex programming and an effective algorithm: Generalized Infinitesimal Gradient Ascent for this problem, making for the fundamental construction of online learning. However, it only derives a general model aiming at online convex optimization, with a number of details to be modified and renovated in specific situations. \cite{OLServey} comprehensively displayed online convex optimizing theory, on which our online learning researches are predicated.
+\subsection{Industrial context}
 
-With regard to our particular problem setting: minimizing the overall regret with a fixed upper limit of budget,\cite{low-cost} presented an all-round dissection of it. \cite{low-cost} firstly utilized the classical online learning algorithm: Follow the Regularized Leader(FTRL) to update steadily the hypothesis in every round the mechanism should give, in light of information the mechanism has acquired in previous rounds about offered hypotheses and suffered loss. Then \cite{low-cost} embedded FTRL in their main algorithm: Mechanism for no-regret data-purchasing problem, which resolved the problem with an upper regret bound $O(T/\sqrt{B})$.
+The industrial context our work pertains to is fingerprinting localization based on mobile crowdsensing. In regard to localization via fingerprints, Kaemarungsi and Krishnamurthy draft out the analytical model of it \cite{kaemarungsi2004modeling}, and Wen \emph{et al.} further dig into this model combined with received signal strength, making out theoretical analysis of its limits on indoor localization \cite{wen2015fundamental}. Concerning mobile crowdsensing, Ganti \emph{et al.} presents a brief overview of concrete applications about this technique, dissects its distinctive useful features and furthurmore blueprints its future utilization and challenges\cite{ganti2011mobile}.Meanwhile, mobile crowdsensing approach has been applied to various domains such as transportation \cite{transportation2}, environment surveillance \cite{environment,environment2} and location based service \cite{lbs, lbs2},evincing the research value of this method in reality.
 
-In terms of concrete techniques applied in \cite{low-cost}, importance weighting is an important one, playing a crucial role in estimating unbiasedly the cumulative loss suffered until the current round. This technique is also a research point in our work, and we focus on providing an alternative form of the unbiased estimator to reach better regret bound. One specific application of importance weighting methods--binary classification is shown and analyzed in \cite{importance weight}.
+\subsection{Basic theory}
 
-Moreover, a bottleneck in solving this problem is the complex form of our objective function and budget constraint, with unknown distributions of costs in each round and an inequality containing integral. \cite{low-cost} made use of inequality zooming methods to clear the integral part in budget constraint, rendering a more computable convex optimizing problem. However, this method can only derive an approximated solution and the corresponding bound may not be tight enough. In our work we try to get access to the accurate solution of this problem, by means of calculus variation. \cite{calculus-variation} illustrates the applicability and methods of calculus variation in detail. A concrete example taking advantage of it lies in \cite{conduct truthful survey}. \cite{conduct truthful survey} dealt with the problem that minimizing the variance of estimator with a given price distribution and a fixed budget by calculus variation. Nevertheless, it concentrated on the offline situation, deviating from our online background.
+The basic theory of our work is online learning, which is applied to the fingerprinting data procurement phase of indoor localization. Zinkevich provided an introduction of online convex programming and an effective algorithm: Generalized Infinitesimal Gradient Ascent for this problem, making for the fundamental construction of online learning\cite{zinkevich2003online}. However, it only derives a general model aiming at online convex optimization, with a number of details to be modified and renovated in specific situations. Online convex optimizing theory has been comprehensively displayed in \cite{shalev2011online}, on which our online learning researches are predicated.
 
+One of the kernel issues in online learning is how to evaluate the quality of data acquired. In online learning, an acknowledged way to assessing procured data is the regret, which can be viewed informally as the difference of overall loss between the strategy one chooses and the theoretical best strategy reaching the least loss \cite{shalev2011online}.Abernethy \emph{et al.} crystallize a particular online problem setting with a regret analysis attached\cite{abernethy2015low}.
+
+\subsection{Our particular problem}
+
+Based on the theoretical tool mentioned above, Our particular problem can be interpreted as: minimizing the overall regret in online learning with a fixed upper limit of budget.With regard to this problem setting, Abernethy \emph{et al.} presented an all-round dissection of it\cite{abernethy2015low}. They firstly utilized the classical online learning algorithm: Follow the Regularized Leader(FTRL) to update steadily the hypothesis in every round the mechanism should give, in light of information the mechanism has acquired in previous rounds about offered hypotheses and suffered loss. Then They embedded FTRL in their main algorithm: Mechanism for no-regret data-purchasing problem, which resolved the problem with an upper regret bound $O(T/\sqrt{B})$. Compared with what Abernethy \emph{et al.} have done\cite{abernethy2015low}, what is special in our work is to further lower the regret bound of online learning in the context of indoor localization--a brand new research background in online learning realm.\\
+\indent In terms of concrete techniques applied in this particular problem, importance weighting is an important one, playing a crucial role in estimating unbiasedly the cumulative loss suffered until the current round\cite{abernethy2015low}. This technique is also a research point in our work, and we focus on providing an alternative form of the unbiased estimator to reach better regret bound. One specific application of importance weighting methods--binary classification is shown and analyzed in \cite{beygelzimer2009importance}.\\
+\indent Moreover, a bottleneck in solving this particular problem is the complex form of our objective function and budget constraint, with unknown distributions of costs in each round and an inequality containing integral. Abernethy \emph{et al.} made use of inequality zooming methods to clear the integral part in budget constraint, rendering a more computable convex optimizing problem\cite{abernethy2015low}. However, this method can only derive an approximated solution and the corresponding bound may not be tight enough. In our work we try to get access to the accurate solution of this problem, by means of calculus variation. The applicability and methods of calculus variation are illustrated in detail in \cite{liberzon2012calculus}  . A concrete example taking advantage of it lies in \cite{roth2012conducting},which dealt with the problem that minimizing the variance of estimator with a given price distribution and a fixed budget by calculus variation. Nevertheless, it concentrated on the offline situation, deviating from our online background.
 
 
 \section{Localization Model}
@@ -186,8 +193,48 @@ In this senario, the mechanism do not have a certain amount of budget, instead, 
 \bibitem{rsscsi}
 Z.~Yang, Z.~Zhou and Y.~Liu, ``From RSSI to CSI: Indoor localization via channel response,'' \emph{ACM Comput. Surv.}, vol.~46, no.~2, pp.1-32, 2013.
 
+%related work part
+\bibitem{kaemarungsi2004modeling}
+K.Kaemarungsi, and P.Krishnamurthy, ``Modeling of indoor positioning systems based on location fingerprinting,'' in \emph{Twenty-third AnnualJoint Conference of the IEEE Computer and Communications Societies}, 2004, vol. 2, pp. 1012--1022.
 
+\bibitem{wen2015fundamental}
+Y.~Wen, X.~Tian, X.~Wang and S.~Lu, ``Fundamental limits of RSS fingerprinting based indoor localization,'' in \emph{Proc. IEEE INFOCOM}, 2015, pp.2479--2487.
 
+\bibitem{ganti2011mobile}
+R.K.Ganti, F.Ye, H,Lei, ``Mobile crowdsensing: current state and future challenges,'' \emph{IEEE Communications Magazine}, vol.49, no.11, pp.32-39, 2011.
+
+\bibitem{transportation2}
+S.Hu, L.Su, H.Liu, H.Wang, and T.F.Abdelzaher, ``Smartroad: Smartphone-based crowd sensing for traffic regulator detection and identification,'' \emph{ACM Transactions on Sensor Networks}, vol.11, no.4, pp.55, 2015.
+
+\bibitem{environment}
+M.Mun, S.Reddy, K.Shilton, N.Yau, J.Burke, D.Estrin, M.Hansen, E.Howard, R.West, and P.Boda, ``PEIR, the personal environmental impact report, as a platform for participatory sensing systems research,'' in \emph{Proc.ACM MobiSys}, 2009, pp.55--68.
+
+\bibitem{environment2}
+R.Rana, C.Chou, S.Kanhere, N.Bulusu, and W.Hu, ``Earphone:An end-to-end participatory urban noise mapping,'' in \emph{Proc.ACM/IEEE IPSN}, 2010, pp.105--116.
+
+\bibitem{lbs}
+R.Gao, M.Zhao, T.Ye, F.Ye, Y.Wang, K.Bian, T.Wang, and X.Li, ``Jigsaw: Indoor floor pan plan reconstruction via mobile crowdsensing,'' in \emph{Proc.ACM MobiCom}, 2014, pp.249--260.
+
+\bibitem{lbs2}
+Y.Wen, J.Shi, Q.Zhang, X.Tian, Z.Huang, H.Yu, Y.Cheng, and X.Shen, ``Quality-driven auction-based incentive mechanism for mobile crowd sensing,'' \emph{IEEE Transactions on Vehicular Technology}, vol.64, no.9, pp.4203-4214, 2015.
+
+\bibitem{zinkevich2003online}
+M.Zinkevich, ``Online convex programming and generalized infinitesimal gradient ascent,'' School of Computer Science, Carnegie Mellon University, 2003.
+
+\bibitem{shalev2011online}
+S.Shalev-Shwartz, ``Online learning and online convex optimization,'' \emph{Foundations and Trends in Machine Learning}, vol.4, no.2, pp.107-194, 2011.
+
+\bibitem{abernethy2015low}
+J.Abernethy, Y.Chen, C.J.Ho, and B.Waggoner, ``Low-cost learning via active data procurement,'' in \emph{Proceedings of the Sixteenth ACM Conference on Economics and Computation}, 2015, pp.619--636.
+
+\bibitem{beygelzimer2009importance}
+A.Beygelzimer, S.Dasgupta, and J.Langford, ``Importance weighted active learning,'' in \emph{Proceedings of the 26th Annual International Conference on Machine Learning}, 2009, pp.49--56.
+
+\bibitem{liberzon2012calculus}
+D.Liberzon, ``Calculus of variations and optimal control theory: a concise introduction,'' Princeton University Press, 2012.
+
+\bibitem{roth2012conducting}
+A.Roth, and G.Schoenebeck, ``Conducting truthful surveys, cheaply,'' in \emph{Proceedings of the 13th ACM Conference on Electronic Commerce}, 2012, pp.826--843.
 
 
 
