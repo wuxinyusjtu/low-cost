@@ -92,18 +92,22 @@ Moreover, a bottleneck in solving this problem is the complex form of our object
  In many situations, we could not get access to all the data for both the reason that the data has a cost and our budget is limited. In this section, we will define the problem of thedesigning of the effective mechanism to acquire the RSS information collected by the crowds. However, the mechanism have no means to know either the data is good enough for our localization or there will be a better one coming after. We implement the online machine learning algorithm in our mechanism.
 \subsection{Preliminaries and basic assumption}
 We first define the loss function according to the localization model above.
-\[f_t(h_t)=\]
+\begin{equation}
+f_t(h_t)=
+\end{equation}
  After we acquire the loss function, we give the defininition of the regret function.
 \[R(T)=\sum_{t=1}^Tf_t(h_t)-\min_{h^*\in H}\sum_{t=1}^Tf_t(h^*_t)\]
 where $h^*$ is the optimal choice, causing the least loss in our solution space $H$.
 We also make some assumptions for this problem
 \begin{enumerate}
-\item 
+\item the agents may lie about the price but 
 \item 
 \item 
 \end{enumerate}
 \subsection{Online Learning Algorithms}
 We will here use the classical Follow the Regularized Leader(FoRL) algorithm to work as the Online Algorithms. The FoRL has a upper bound of regret of $O(\sqrt{T})$, which ensures that the average regret tends to zero when.There are many kinds of other Online Algorithms which can be found in \ref{OLServey}, etc. The FoRL is described in \ref{}.
+\begin{algorithm}
+\end{algorithm}
 \subsection{Problem formulation}
 The problem can be described as follows. 
 \begin{enumerate}
@@ -122,18 +126,45 @@ We give our final results by averaging every hypothesis $h_t$ acquired in each
 Details will be added later.
 \section{The regret minimization senario}
 In this senario, the mechanism has a fixed budget. The main purpose of the mechanism is to get a high accuracy of localization informaiton, which is consistent with our definition of loss function and regret. 
-\subsection{Upper bound of regret}
+\subsection{Estimate the upper bound of regret}
 We will first find the upper bound of the regret. \cite{} gives a quite well estimation as shown in the following lemma
 \begin{Lemma}{}
 The regret bound of problem \ref{} using the OLA of FoRL is bounded by
 \[R(T)=\frac{\beta}{\eta}+E(\sum_{t=1}^T\frac{\Delta_{h_t,f_t}^2}{q_t})\]
 \end{Lemma}
-\subsection{Randomized posted price setting}
-There still many details be determined here.
-\subsection{The optmization problem}
-Now we can change the problem into a more single form.
-\[\min \sum_{t=1}^T\frac{\Delta_{h_t,f_t}^2}{q_{c_t}}\]
-\[s.t. \sum_{t=0}^T\int_{c_t}^Mxdq(x)\leq B\]
+
+\subsection{Derivation of the Regeret Minimization Problem}
+First consider the unconstrained problem. If $\overline{y}$ is the local minimum of the functional $J(y)$
+if $y$ is the local niminum of $J(y)$, then it holds that $\forall \hat{y}$ in a function space $V$
+\[\delta J|_y(\hat{y}-\overline{y})\geq 0\]
+where $,\delta J|_y(\hat{y}-\overline{y})$is the Gateaux deravative of J in the direction of $\hat{y}-\overline{y}$. 
+
+We then consider the constraint problem. For the constraint optimization problem, we have that if $y$ is the extremal of the constraint problem, then it is also the extremal of the augmented cost functional(Lagarangian) $J(y)+\lambda C(y)$,where the $\lambda$ is the Lagarange Multiplier, and $C(y)$ is the constraint.
+
+We come back to our problem. We first give our function space $V=\{y|y(0)=0,y(M)=1\}$. And we denote our cost function as
+\[M(F_1,,,F_n)= \sum_{i=1}^n \frac{\alpha_i}{1-F_i(c_i)}.\]
+Then the augmented cost function is derived as
+\[J(F_1,,,F_n,\lambda)=M(F_1,,,F_n)+\lambda( \sum_{i=1}^n\int_{c_i}^MxdF_i(x)-B) \]
+According to the calculation, we obtain that for $\forall \hat{F}\in V$
+\[\delta J|_{F_t}(\hat{F_t}-F_t)=\int_{c_t}^M(-\frac{\alpha_t}{(1-F_t(c_t))^2}+\lambda x)(\hat{f}(x)-f(x))dx\]
+if $\overline{F}$ is the local minimum, then we have
+\[\delta J(\hat{F_t}-\overline{F_t})\geq 0\]
+holds for every $\hat{F}\in V$.Noticing that
+\[\int_0^Mf_t(x)-f(x)dx=0\]
+We must have 
+\[-\frac{\alpha_t}{(1-F_t(c_t))^2}+\lambda x\geq 0\]
+hold on every where on $[c_t,M]$
+thus we obtain that
+\[F_t(c)=1-\sqrt{\frac{\alpha_t}{\lambda c}}\quad c\in(0,M)\]
+Noticing that $F(x)$ is not continuous, according to Stieltjes Integral, we rewrite the constraint as following
+\[ \sum_{i=1}^n(\int_{c_i}^Mxf_i(x)dx+(1-F_i(M)M)\leq B\]
+According to the property of Lagarangian, we have
+\[\frac{\partial J}{\partial \lambda}=\sum_{i=1}^n(\int_{c_i}^Mxf_i(x)dx+(1-F_i(M)M)-B=0\]
+we can solve the $\lambda$ when we have the form of $F_t$
+
+\subsection{Interpreting of the result}
+The result shows that
+
 \section{The budget minimization senario}
 In this senario, the mechanism do not have a certain amount of budget, instead, an upper bound of regret $R_{min}$ is required as a constraint and the optimization target changes to the minimum of budget.
 \[\min E(B)\]

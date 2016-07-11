@@ -1,0 +1,41 @@
+\documentclass{article}
+\begin{document}
+\title{Solution V1.1}
+\author{LST}
+\maketitle
+\section{problem definition}
+\[\min \sum_{i=1}^n \frac{\alpha_i}{1-F_i(c_i)}\]
+\[s.t. \quad \sum_{i=1}^n\int_{c_i}^MxdF_i(x)\leq B\]
+where $\forall c_i,0\leq c_i\leq M$,and$F(0)=0,F(M)=1$
+\section{solution}
+First consider the unconstrained problem. If $\overline{y}$ is the local minimum of the functional $J(y)$
+if $y$ is the local niminum of $J(y)$, then it holds that $\forall \hat{y}$ in a function space $V$
+\[\delta J|_y(\hat{y}-\overline{y})\geq 0\]
+where $,\delta J|_y(\hat{y}-\overline{y})$is the Gateaux deravative of J in the direction of $\hat{y}-\overline{y}$. 
+
+We then consider the constraint problem. For the constraint optimization problem, we have that if $y$ is the extremal of the constraint problem, then it is also the extremal of the augmented cost functional(Lagarangian) $J(y)+\lambda C(y)$,where the $\lambda$ is the Lagarange Multiplier, and $C(y)$ is the constraint.
+
+We come back to our problem. We first give our function space $V=\{y|y(0)=0,y(M)=1\}$. And we denote our cost function as
+\[M(F_1,,,F_n)= \sum_{i=1}^n \frac{\alpha_i}{1-F_i(c_i)}.\]
+Then the augmented cost function is derived as
+\[J(F_1,,,F_n,\lambda)=M(F_1,,,F_n)+\lambda( \sum_{i=1}^n\int_{c_i}^MxdF_i(x)-B) \]
+According to the calculation, we obtain that for $\forall \hat{F}\in V$
+\[\delta J|_{F_t}(\hat{F_t}-F_t)=\int_{c_t}^M(-\frac{\alpha_t}{(1-F_t(c_t))^2}+\lambda x)(\hat{f}(x)-f(x))dx\]
+if $\overline{F}$ is the local minimum, then we have
+\[\delta J(\hat{F_t}-\overline{F_t})\geq 0\]
+holds for every $\hat{F}\in V$.Noticing that
+\[\int_0^Mf_t(x)-f(x)dx=0\]
+We must have 
+\[-\frac{\alpha_t}{(1-F_t(c_t))^2}+\lambda x\geq 0\]
+hold on every where on $[c_t,M]$
+thus we obtain that
+\[F_t(c)=1-\sqrt{\frac{\alpha_t}{\lambda c}}\quad c\in(0,M)\]
+Noticing that $F(x)$ is not continuous, according to Stieltjes Integral, we rewrite the constraint as following
+\[ \sum_{i=1}^n(\int_{c_i}^Mxf_i(x)dx+(1-F_i(M)M)\leq B\]
+According to the property of Lagarangian, we have
+\[\frac{\partial J}{\partial \lambda}=\sum_{i=1}^n(\int_{c_i}^Mxf_i(x)dx+(1-F_i(M)M)-B=0\]
+we can solve the $\lambda$ when we have the form of $F_t$
+\section{Note}
+The definition of Gateaux Deravative is 
+\[\delta J|_y(\eta)=\lim_{\epsilon \to 0} \frac{J(y+\epsilon \eta)-J(y)}{\epsilon}\]
+\end{document}
