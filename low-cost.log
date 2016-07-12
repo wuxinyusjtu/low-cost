@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2016.5.12)  11 JUL 2016 17:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2016.5.12)  12 JUL 2016 15:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -355,11 +355,15 @@ Package: amsthm 2015/03/04 v2.20.2
 \thm@headsep=\skip73
 \dth@everypar=\toks30
 )
+(c:/texlive/2015/texmf-dist/tex/latex/doublestroke/dsfont.sty
+Package: dsfont 1995/08/01 v0.1 Double stroke roman fonts
+)
 (c:/texlive/2015/texmf-dist/tex/latex/cases/cases.sty
 Package: cases 2002/05/02 ver 2.5 
 )
 \c@theorem=\count119
 \c@definition=\count120
+\c@Lemma=\count121
 
 
 LaTeX Warning: Unused global option(s):
@@ -368,32 +372,32 @@ LaTeX Warning: Unused global option(s):
 (./low-cost.aux)
 \openout1 = `low-cost.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
 
 -- Lines per column: 56 (exact).
 (c:/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count121
+\scratchcounter=\count122
 \scratchdimen=\dimen154
 \scratchbox=\box38
-\nofMPsegments=\count122
-\nofMParguments=\count123
+\nofMPsegments=\count123
+\nofMParguments=\count124
 \everyMPshowfont=\toks31
-\MPscratchCnt=\count124
+\MPscratchCnt=\count125
 \MPscratchDim=\dimen155
-\MPnumerator=\count125
-\makeMPintoPDFobject=\count126
+\MPnumerator=\count126
+\makeMPintoPDFobject=\count127
 \everyMPtoPDFconversion=\toks32
 ) (c:/texlive/2015/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
@@ -452,149 +456,155 @@ LaTeX Warning: No \author given.
 
 LaTeX Warning: No \author given.
 
-\c@Lemma=\count127
 
-LaTeX Warning: Citation `mobicom04' on page 1 undefined on input line 60.
-
-
-LaTeX Warning: Citation `horus' on page 1 undefined on input line 60.
+LaTeX Warning: Citation `mobicom04' on page 1 undefined on input line 66.
 
 
-LaTeX Warning: Citation `wen2015fundamental' on page 1 undefined on input line 
-62.
+LaTeX Warning: Citation `horus' on page 1 undefined on input line 66.
 
 
-LaTeX Warning: Citation `Chenshu14' on page 1 undefined on input line 62.
+LaTeX Warning: Citation `Chenshu14' on page 1 undefined on input line 68.
 
 
-LaTeX Warning: Citation `luo2014piloc' on page 1 undefined on input line 62.
+LaTeX Warning: Citation `luo2014piloc' on page 1 undefined on input line 68.
 
 
-LaTeX Warning: Citation `shen2013walkie' on page 1 undefined on input line 62.
+LaTeX Warning: Citation `shen2013walkie' on page 1 undefined on input line 68.
 
 
-LaTeX Warning: Citation `ez10' on page 1 undefined on input line 62.
+LaTeX Warning: Citation `ez10' on page 1 undefined on input line 68.
 
 
-LaTeX Warning: Citation `Chintalapudi10' on page 1 undefined on input line 62.
+LaTeX Warning: Citation `Chintalapudi10' on page 1 undefined on input line 68.
 
 
-LaTeX Warning: Citation `crowdsensing' on page 1 undefined on input line 62.
+LaTeX Warning: Citation `crowdsensing' on page 1 undefined on input line 68.
 
 
-LaTeX Warning: Citation `postedpricing' on page 1 undefined on input line 62.
+LaTeX Warning: Citation `postedpricing' on page 1 undefined on input line 68.
 
 
-LaTeX Warning: Citation `crowdsensing' on page 1 undefined on input line 62.
+LaTeX Warning: Citation `crowdsensing' on page 1 undefined on input line 68.
 
 
-LaTeX Warning: Citation `Lbs2' on page 1 undefined on input line 65.
+LaTeX Warning: Citation `Lbs2' on page 1 undefined on input line 71.
 
 
-LaTeX Warning: Citation `Crowdloc14' on page 1 undefined on input line 65.
+LaTeX Warning: Citation `Crowdloc14' on page 1 undefined on input line 71.
 
 
-LaTeX Warning: Citation `Taskselection15' on page 1 undefined on input line 65.
+LaTeX Warning: Citation `Taskselection15' on page 1 undefined on input line 71.
 
 
 
-LaTeX Warning: Citation `recruit' on page 1 undefined on input line 65.
+LaTeX Warning: Citation `recruit' on page 1 undefined on input line 71.
 
 
-LaTeX Warning: Citation `Pengdan15' on page 1 undefined on input line 65.
+LaTeX Warning: Citation `Pengdan15' on page 1 undefined on input line 71.
 
 
-LaTeX Warning: Citation `noise' on page 1 undefined on input line 65.
+LaTeX Warning: Citation `noise' on page 1 undefined on input line 71.
 
 
-LaTeX Warning: Citation `incentive' on page 1 undefined on input line 65.
+LaTeX Warning: Citation `incentive' on page 1 undefined on input line 71.
 
 
-LaTeX Warning: Citation `Incentive2' on page 1 undefined on input line 65.
+LaTeX Warning: Citation `Incentive2' on page 1 undefined on input line 71.
 
-Missing character: There is no â in font ptmr7t!
-Missing character: There is no € in font ptmr7t!
-Missing character: There is no ¦ in font ptmr7t!
-Missing character: There is no â in font ptmr7t!
-Missing character: There is no € in font ptmr7t!
-Missing character: There is no ¦ in font ptmr7t!
-Missing character: There is no â in font ptmr7t!
-Missing character: There is no € in font ptmr7t!
-Missing character: There is no ¦ in font ptmr7t!
-Missing character: There is no â in font ptmr7t!
-Missing character: There is no € in font ptmr7t!
-Missing character: There is no ¦ in font ptmr7t!
-Missing character: There is no â in font ptmr7t!
-Missing character: There is no € in font ptmr7t!
-Missing character: There is no ¦ in font ptmr7t!
-Missing character: There is no â in font ptmr7t!
-Missing character: There is no € in font ptmr7t!
-Missing character: There is no ¦ in font ptmr7t!
-
-LaTeX Warning: Citation `ICML-OLA' on page 1 undefined on input line 79.
-
-
-LaTeX Warning: Citation `OLServey' on page 1 undefined on input line 79.
-
-
-LaTeX Warning: Citation `low-cost' on page 1 undefined on input line 81.
-
-
-LaTeX Warning: Citation `low-cost' on page 1 undefined on input line 81.
-
-
-LaTeX Warning: Citation `low-cost' on page 1 undefined on input line 81.
-
-LaTeX Font Info:    Try loading font information for U+msa on input line 81.
+LaTeX Font Info:    Try loading font information for U+msa on input line 80.
 (c:/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 81.
+LaTeX Font Info:    Try loading font information for U+msb on input line 80.
 
 (c:/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 81.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 80.
 
 (c:/texlive/2015/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
 
-LaTeX Warning: Citation `low-cost' on page 1 undefined on input line 83.
+LaTeX Warning: Reference `' on page 1 undefined on input line 82.
 
 
-LaTeX Warning: Citation `importance weight' on page 1 undefined on input line 8
-3.
+LaTeX Warning: Reference `' on page 1 undefined on input line 82.
 
 
-LaTeX Warning: Citation `low-cost' on page 1 undefined on input line 85.
+LaTeX Warning: Reference `' on page 1 undefined on input line 82.
 
 
-LaTeX Warning: Citation `calculus-variation' on page 1 undefined on input line 
-85.
+LaTeX Warning: Reference `' on page 1 undefined on input line 82.
 
 
-LaTeX Warning: Citation `conduct truthful survey' on page 1 undefined on input 
-line 85.
+LaTeX Warning: Reference `' on page 1 undefined on input line 82.
 
 
-LaTeX Warning: Citation `conduct truthful survey' on page 1 undefined on input 
-line 85.
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[1{c:/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+ [1{c:/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
 
-LaTeX Warning: Reference `OLServey' on page 2 undefined on input line 108.
+LaTeX Warning: Reference `' on page 2 undefined on input line 106.
+
+LaTeX Font Info:    Try loading font information for U+dsrom on input line 106.
+
+(c:/texlive/2015/texmf-dist/tex/latex/doublestroke/udsrom.fd
+File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
+)
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+Missing character: There is no ï in font ptmr7t!
+Missing character: There is no ¿ in font ptmr7t!
+Missing character: There is no ½ in font ptmr7t!
+Missing character: There is no ï in font ptmr7t!
+Missing character: There is no ¿ in font ptmr7t!
+Missing character: There is no ½ in font ptmr7t!
+[2] <Figure1.png, id=21, 303.38344pt x 210.7875pt>
+File: Figure1.png Graphic file (type png)
+ <use Figure1.png>
+Package pdftex.def Info: Figure1.png used on input line 137.
+(pdftex.def)             Requested size: 199.16928pt x 138.38364pt.
+Missing character: There is no ï in font ptmr7t!
+Missing character: There is no ¿ in font ptmr7t!
+Missing character: There is no ½ in font ptmr7t!
+Missing character: There is no ï in font ptmr7t!
+Missing character: There is no ¿ in font ptmr7t!
+Missing character: There is no ½ in font ptmr7t!
+ [3 <./Figure1.png>]
+Missing character: There is no ï in font ptmr7t!
+Missing character: There is no ¿ in font ptmr7t!
+Missing character: There is no ½ in font ptmr7t!
+Missing character: There is no ï in font ptmr7t!
+Missing character: There is no ¿ in font ptmr7t!
+Missing character: There is no ½ in font ptmr7t!
+ <Figure4.pdf, id=36, 637.88312pt x 515.9275pt>
+File: Figure4.pdf Graphic file (type pdf)
+ <use Figure4.pdf>
+Package pdftex.def Info: Figure4.pdf used on input line 187.
+(pdftex.def)             Requested size: 199.16928pt x 161.08524pt.
+
+[4 <./Figure4.pdf>]
+
+LaTeX Warning: Reference `OLServey' on page 5 undefined on input line 264.
+
+[5]
+
+LaTeX Warning: Reference `' on page 6 undefined on input line 306.
 
 
-LaTeX Warning: Reference `' on page 2 undefined on input line 108.
+LaTeX Warning: Reference `' on page 6 undefined on input line 309.
 
 
-LaTeX Warning: Reference `' on page 2 undefined on input line 130.
+Underfull \hbox (badness 7869) in paragraph at lines 377--378
+[]\OT1/ptm/m/n/8 S.Hu, L.Su, H.Liu, H.Wang, and T.F.Abdelzaher, ``Smartroad:
+ []
 
-[2]
+[6]
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -606,7 +616,7 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[3
+[7
 
 ] (./low-cost.aux)
 
@@ -614,29 +624,37 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 5268 strings out of 493089
- 76459 string characters out of 6138425
- 169578 words of memory out of 5000000
- 8655 multiletter control sequences out of 15000+600000
- 37444 words of font info for 75 fonts, out of 8000000 for 9000
- 1144 hyphenation exceptions out of 8191
- 38i,7n,26p,1075b,234s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 5338 strings out of 493089
+ 77497 string characters out of 6138425
+ 178802 words of memory out of 5000000
+ 8708 multiletter control sequences out of 15000+600000
+ 43077 words of font info for 96 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 38i,22n,26p,1540b,248s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2015/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2015/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2015/texmf-dist/fonts/type1
 /public/amsfonts/cm/cmmi5.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmi7.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr10.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><
-c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texliv
-e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2015/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2015/texmf-dist/fo
-nts/type1/urw/times/utmb8a.pfb><c:/texlive/2015/texmf-dist/fonts/type1/urw/time
-s/utmbi8a.pfb><c:/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/
-texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on low-cost.pdf (3 pages, 141397 bytes).
+sfonts/cm/cmmi6.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmmi7.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb>
+<c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texliv
+e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2015/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2015/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2015/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr8.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmsy10.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+5.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/
+texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/20
+15/texmf-dist/fonts/type1/public/doublestroke/dsrom10.pfb><c:/texlive/2015/texm
+f-dist/fonts/type1/public/doublestroke/dsrom8.pfb><c:/texlive/2015/texmf-dist/f
+onts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2015/texmf-dist/fonts
+/type1/urw/times/utmb8a.pfb><c:/texlive/2015/texmf-dist/fonts/type1/urw/times/u
+tmbi8a.pfb><c:/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/tex
+live/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on low-cost.pdf (7 pages, 344278 bytes).
 PDF statistics:
- 67 PDF objects out of 1000 (max. 8388607)
- 48 compressed objects within 1 object stream
+ 141 PDF objects out of 1000 (max. 8388607)
+ 93 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

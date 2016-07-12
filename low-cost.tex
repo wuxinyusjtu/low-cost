@@ -27,12 +27,18 @@
 \usepackage[ruled,vlined]{algorithm2e}
 \usepackage{mathrsfs}
 \usepackage{amsthm}
+
+\usepackage{dsfont}
 \usepackage{cases}
-\hyphenation{op-tical net-works semi-conduc-tor}
+
 \newtheorem{theorem}{Theorem}
 \newtheorem{definition}{Definition}
-\DeclareMathOperator*{\argmax}{arg\,max}
+\newtheorem{Lemma}{Lemma}
 
+\newcommand{\ie}{{\em i.e.}}
+\newcommand{\eg}{{\em e.g.}}
+\newcommand{\et}{{\em et al.}}
+\newcommand{\st}{{\em s.t.}}
 
 \begin{document}
 
@@ -49,7 +55,7 @@
 
 \maketitle
 
-\newtheorem{Lemma}{Lemma}
+
 
 \begin{abstract}
 
@@ -64,23 +70,25 @@ The fingerprinting based method utilizes Wi-Fi APs widely existing in buildings 
 
 As the crowdsensing data are collected by unprofessional participants with non-dedicated equipment, the sensing data obtained are usually with considerable noise. The quality of the sensing data is the crux for evaluating contribution of the participants, which is the vitally important for effective utilizing rewards to incentivize participants to accomplish sensing tasks satisfactorily. However, how to evaluate the quality of the crowdsensing data is a challenging issue, because there is no ground truth for the collected data to be compared with. Efforts have been made to evaluate the crowdsensing data quality \cite{ Lbs2, Crowdloc14}, and the task allocation scheme \cite{ Taskselection15, recruit} and incentive mechanisms considering the data quality are proposed \cite{ Pengdan15, noise, incentive, Incentive2}. 
 
-While the efforts have been made to study quality evaluation of crowdsensing data for mobile applications in general framework \cite{}, how to evaluate the quality of fingerprints with crowdsensing approach in the indoor localization case is still not fully investigated, which is the focus of this work. Our motivation is two-fold. On one hand, the existing work for data quality evaluation in the literature \cite{} can not be applied to the indoor localization system in practice; on the other hand, we want to find out how the very nature of the indoor localization system could facilitate evaluating quality of crowdsensed fingerprints. Our contributions are as following.
+While the efforts have been made to study quality evaluation of crowdsensing data for mobile applications in general framework \cite{}, how to acquire the high-quality data of fingerprints with crowdsensing approach in the indoor localization case is still not fully investigated, which is the focus of this work. Our motivation is two-fold. On one hand, the existing work for data quality procurement in the literature \cite{} can not be applied to the indoor localization system in practice; on the other hand, we want to find out how the very nature of the indoor localization system could facilitate evaluating quality of crowdsensed fingerprints. Our contributions are as following.
 
-First, ……
+First, we design an effective model to measure the quality RSS data.
+[To be completed by WenXin] With such a measurenent, we successfully convert the problem into the basic framework of how to acquire the RSS data of best quality with the lowest costs.
 
-Second, …….
+Second, we produce a mechanism for RSS data procurement under a relatively nicer assumption that the costs of data are drawn according to a known distribution. Based on this assumption, we develope the meachnism to acquire the RSS data coming in an . The performance of our mechanism is dependent on both the quality of prior knowledge about the distribution of the costs and the regularity of the data. When the data is relevant to a known distribution, \ie the emvironment where the RSS data is measured is stable, the mechanism can perform well. However, when the incoming data are rather more irrelavent, the mechanism may not perform well.
 
-Third, ……
+Third, we generalize the mechanism to a more general case where the incoming cost of data is adversarially given. Using the technique of varitional calculus, we give an upper regret bound of $O()$. The mechanism is robust in most indoor-localization situations, even the prior knowledge of the costs is not well understood and the noise in the crowdsensing data is rather irregular. And we further provide a most economical data procure mechanism when the accuracy of RSS data is required.
 
+The remaining of the paper is organized as following. The system structure and settings are given in section \ref{}. The measurement  RSS data quality is presented in Section \ref{}. Section gives the abstract definition for the online data procurement mechanism. Section \ref{} describes the mechanism under the simple assumption that the costs data are drawn in a distribution. Section \ref{} presents a generalized and more robust mechanism for the RSS data procurement. Section \ref{} gives our simulations and experiments for the mechanism we given before.
 
 
 
 \section{Related Work \label{sectionrelatedwork}}
 \subsection{Industrial context}
 
-The industrial context our work pertains to is fingerprinting localization based on mobile crowdsensing. In regard to localization via fingerprints, Kaemarungsi and Krishnamurthy draft out the analytical model of it \cite{kaemarungsi2004modeling}, and Wen \emph{et al.} further dig into this model combined with received signal strength, making out theoretical analysis of its limits on indoor localization \cite{wen2015fundamental}. Concerning mobile crowdsensing, Ganti \emph{et al.} presents a brief overview of concrete applications about this technique, dissects its distinctive useful features and furthurmore blueprints its future utilization and challenges\cite{ganti2011mobile}.Meanwhile, mobile crowdsensing approach has been applied to various domains such as transportation \cite{transportation2}, environment surveillance \cite{environment,environment2} and location based service \cite{lbs, lbs2},evincing the research value of this method in reality.
+The industrial context our work pertains to is fingerprinting localization based on mobile crowdsensing. In regard to localization via fingerprints, Kaemarungsi and Krishnamurthy draft out the analytical model of it \cite{kaemarungsi2004modeling}, and Wen \emph{et al.} \cite{}further dig into this model combined with received signal strength, making out theoretical analysis of its limits on indoor localization \cite{wen2015fundamental}. Concerning mobile crowdsensing, Ganti \emph{et al.} presents a brief overview of concrete applications about this technique, dissects its distinctive useful features and furthurmore blueprints its future utilization and challenges\cite{ganti2011mobile}.Meanwhile, mobile crowdsensing approach has been applied to various domains such as transportation \cite{transportation2}, environment surveillance \cite{environment,environment2} and location based service \cite{lbs, lbs2},evincing the research value of this method in reality.
 
-\subsection{Basic theory}
+\subsection{Online Learning and Online Optimization}
 
 The basic theory of our work is online learning, which is applied to the fingerprinting data procurement phase of indoor localization. Zinkevich provided an introduction of online convex programming and an effective algorithm: Generalized Infinitesimal Gradient Ascent for this problem, making for the fundamental construction of online learning\cite{zinkevich2003online}. However, it only derives a general model aiming at online convex optimization, with a number of details to be modified and renovated in specific situations. Online convex optimizing theory has been comprehensively displayed in \cite{shalev2011online}, on which our online learning researches are predicated.
 
@@ -92,54 +100,216 @@ Based on the theoretical tool mentioned above, Our particular problem can be int
 \indent In terms of concrete techniques applied in this particular problem, importance weighting is an important one, playing a crucial role in estimating unbiasedly the cumulative loss suffered until the current round\cite{abernethy2015low}. This technique is also a research point in our work, and we focus on providing an alternative form of the unbiased estimator to reach better regret bound. One specific application of importance weighting methods--binary classification is shown and analyzed in \cite{beygelzimer2009importance}.\\
 \indent Moreover, a bottleneck in solving this particular problem is the complex form of our objective function and budget constraint, with unknown distributions of costs in each round and an inequality containing integral. Abernethy \emph{et al.} made use of inequality zooming methods to clear the integral part in budget constraint, rendering a more computable convex optimizing problem\cite{abernethy2015low}. However, this method can only derive an approximated solution and the corresponding bound may not be tight enough. In our work we try to get access to the accurate solution of this problem, by means of calculus variation. The applicability and methods of calculus variation are illustrated in detail in \cite{liberzon2012calculus}  . A concrete example taking advantage of it lies in \cite{roth2012conducting},which dealt with the problem that minimizing the variance of estimator with a given price distribution and a fixed budget by calculus variation. Nevertheless, it concentrated on the offline situation, deviating from our online background.
 
+\section{System Model}
+In this section we describe our system model and give out the problem formulation.
 
-\section{Localization Model}
+As shown in Figure~\ref{}, we present a mobile crowdsensing system consisted of \emph{Data Purchaser}, \emph{Trading Platform} and several \emph{Workers}. For the purpose of performing accurate indoor localization in region $\mathcal{V}$, the data purchaser has to build the corresponding \emph{Fingerprint Database} of \emph{Received Signal Strength}(RSS). Therefore the data purchaser releases tasks of collecting data--RSS value on the platform. For a specific location $s\in \mathcal{V}$, we use $\mathds{W}_s=\{w_1,w_2,...,w_{N_s}\}$ to denote the corresponding applicants set. To simplify the notation, we omit the identification of $s$ in almost all the rest of this paper. Without loss of generality, we mainly focus on workers with the same location's data. It's rational that data purchaser need to buy several data points at one location since the RSS value is not constant, in fact it obeys some probability distribution, we assume that its probability density function is $\mathcal{D}(\cdot)$. Consequently, we need several amounts of samples to learn the distribution, more specifically, to estimate the mean value of RSS.
+
+At the very beginning, the data purchaser needs to submit his \emph{Pricing Mechanism} $\mathbb{M}$ to the platform. Here we consider the most nature trading scenario: these $N$ workers arrive in a sequential way with his data $x_i$. Once agents $i$ arrives, he submit his bid $c_i$ to the platform and the platform compute its price $p_i$ using a mechanism $\mathbb{M}$. If $p_i\geq b_i$ then agents $w_i$ accept this transaction: the platform pays $b_i$ to worker $i$ and receives data $x_i$, otherwise the worker reject the transaction and the platform receives null signal.
+
+After the plat form use
+
+\begin{table}[h]
+\caption{\textsc{Notations}} \label{tab:Notation}
+\centering
+\resizebox{\columnwidth}{!}{
+\begin{tabular}[t]{l|p{7cm}}
+\hline
+Notation&Remark \\
+\hline\hline
+$\mathcal{V}$ & Indoor location region\\
+$s$ & A specific location\\
+$\mathds{W}_{s}=\{w_1, \cdots,w_{N_s}\}$ & Applications set for location $s$\\
+$\mathcal{D}(\cdot)$ & Probability density function\\
+$\mathbb{M}$ & Pricing mechanism\\
+$w_i$ & The $i_{th}$ worker\\
+$x_i, b_i, p_i$ & $w_i$'s data, bid, and corresponding price\\
+\hline
+\end{tabular}
+}
+\end{table}
+
+\section{Analysis of two-dimensiion localization}
+\subsection{One-Time Measurement for Single AP in Two-Dimension Space}
+Hereinafter we are devoted to the analysis of one-time measurement for a single AP in two-dimension physical space. Although our research object has been upgraded from a corridor to a room, a more complex one, the kernel thought of our analysis is analogical to that in one-dimension condition, with solely difference in addressing the problem of physical space in a two-dimension Cartesian Coordinate. Ultimately we derive the expression of $P_{high}$ and $P_{low}$ in the sample space of two-dimension physical space, which form $[{P_{low}},{P_{high}}]$, as the feasible interval for judging a user��s location, and furthermore study the possible localizing error incurred by imperfect data.
+
+\subsubsection{Maximum Likelihood Estimation in two-dimension physical space}
+\begin{figure}[!htbp]
+\centering
+\includegraphics [width = 7cm]{Figure1.png}
+%\vspace{-2 mm}
+\caption{Description.}
+\label{fig:1}
+%\vspace{-5 mm}
+\end{figure}
+
+Figure 1 illustrates our model in two-dimension physical space. We designate the AP we sample as the original point $O$ of the coordinate system, and denote $A$ as as the user��s actual location which we focus on estimating. Assume that the distribution of RSS around $A$ are circular symmetric , therefore we can define region $E$ as a circle with radius $\delta$, and measurement in it means that the user is estimated at $A$ while outside it indicates at other possible locations rather than $A$. Note that if we consider any one of the straight lines through $A$, then the distribution and localization are identical to those in one-dimension situation. Then we define the vector from $O$ to $A$ in physical space as $\vec r$ and to any location $A'$ on the boundary of $E$ as $\vec r'$. Therefore, $\vec \delta  = \vec r' - \vec r$ in Figure 1 can be clearly deemed as the difference between user's real location and our estimation result, \ie, the accuracy of our localization. In addition, since $O$ is the AP we consider, the gradient of RSS at $A$ (\ie, $\nabla \vec \mu (\vec r)$ in Figure 1) must be the same direction as $\overrightarrow{OA}$. We also define $\varphi$ as the inserted angle between $\vec \delta $ and $\nabla \vec \mu (\vec r)$, $\varphi  \in \left( { - \pi ,\pi } \right]$, where $\varphi < 0$ denotes the absolute value of $\varphi$ is less than $\pi$ clockwise (\ie, starting from $\nabla \vec \mu (\vec r)$ to $\vec \delta $ while $\varphi  > 0$ indicates the opposite.
+
+Similar as one-dimension condition, MLE can be the judgment of whether a user is located at $A$ in two-dimension physical space based on our localization system. For single-measurement situation the MLE can be expressed as:
+\begin{align}
+{f_{\vec r}}(P) \ge {f_{\vec r + \vec \delta }}(P),
+\end{align}
+where ${f_{\vec r}}(P)$ denotes the probability distribution function of RSS pertaining to the access point $P$ at location $\vec r$. However, unlike in one-dimension condition $\vec \delta$ is reduced to a scalar $\delta$ without directions ($\varphi$) taken into consideration, two-dimension problem requires MLE satisfy every single direction mapped by every possible value of $\varphi  \in \left( { - \pi ,\pi } \right]$. Hence, $\varphi$ should be embedded in our analysis.
+
+In order to render our explanation simpler and clearer, we rotate the coordinate system to a point where the new x-axis covers $\overrightarrow{OA}$ (Figure 2). Meanwhile $\nabla \vec \mu (\vec r)$ is also co-linear with the x-axis. Then aiming to derive the specific expression of MLE, we firstly make some assumptions:
+\begin{itemize}
+\item[(1)] The radius value $\delta$ should be small enough since we intend to meet high localizing accuracy (distinguishing different locations with very short distances from each other). Therefore, $E$ can be viewed as a very small region in physical space.
+\item[(2)] $\left| {\nabla \vec \mu (\vec r)} \right|$ equals to the difference between $\mu (\vec r + \vec \delta )$ and $\mu (\vec r)$ in which $\vec \delta $ is co-linear with the new x-axis. Hereinafter in this section we denote $\nabla$ as $\left| {\nabla \vec \mu (\vec r)} \right|$ to simplify the mathematical expression.
+\item[(3)] Every line perpendicular to $\nabla \vec \mu (\vec r)$ represents that all locations on this line inside $E$ have uniform RSS value. Factually according to the direct correlation between distance and RSS, the equi-value delineation of RSS should be a circle rather than a straight line. Nevertheless, due to the fact that $E$ is small enough, the equi-value curve inside $E$ can be approximated as a line segment.
+\item[(4)] The distribution of RSS strength in two-dimension physical space should be a two-dimension normal distribution. However given that every line vertical to the new x-axis represents an identical RSS value for all locations on it, the normal distribution is degraded to one dimension if we consider the distribution on the new x-axis.
+\end{itemize}
+
+It is clear that the RSS value of $\vec r$ (\ie, $\mu (\vec r)$) corresponds the largest measuring probability when $\vec r$ is which we aim to locate. \textbf{Original Graph in Section 4.1}. Hence we can derive
+\begin{align}
+{f_{\vec r}}(P) = \frac{1}{{\sqrt {2\pi } \sigma }}{e^{ - \frac{{{{(x - \mu (\vec r))}^2}}}{{2{\sigma ^2}}}}},
+\end{align}
+where $\sigma$ represents the intrinsic noise. Combining with Assumption 3 and 4, we can further derive ${f_{\vec r + \vec \delta }}(P)$ predicated on the representative condition in Figure 2.
+\begin{align}
+{f_{\vec r + \vec \delta }}(P) = \frac{1}{{\sqrt {2\pi } \sigma }}{e^{ - \frac{{{{(x - (\mu (\vec r) + \nabla \cos \varphi ))}^2}}}{{2{\sigma ^2}}}}}
+\end{align}
+Then to meet the conditions of MLE, we have:
+\begin{align}
+\frac{1}{{\sqrt {2\pi } \sigma }}{e^{ - \frac{{{{(x - \mu (\vec r))}^2}}}{{2{\sigma ^2}}}}} \ge \frac{1}{{\sqrt {2\pi } \sigma }}{e^{ - \frac{{{{(x - (\mu (\vec r) + \nabla \cos \varphi ))}^2}}}{{2{\sigma ^2}}}}}
+\end{align}
+for all $\varphi  \in \left( { - \pi ,\pi } \right]$. Simplify it we will have:
+\begin{align}
+{(x - \mu (\vec r))^2} \ge {(x - (\mu (\vec r) + \nabla \cos \varphi ))^2}
+\end{align}
+In order to gain clearer insight into this inequality, Figure 3 is displayed as follows in which the sample space is concerned.
+
+In Figure 3, the endpoints of this line segment represent the extreme conditions that $\varphi$ equals to 0 and $\pi$. Analogical to one-dimension analysis, we can derive
+\begin{align}
+{P_{high}} = \frac{{\mu (\vec r) + (\mu (\vec r) + \nabla \cos \varphi )}}{2} = \mu (\vec r) + \frac{{\nabla \cos \varphi }}{2}\\
+{P_{low}} = \frac{{\mu (\vec r) + (\mu (\vec r) - \nabla \cos \varphi )}}{2} = \mu (\vec r) - \frac{{\nabla \cos \varphi }}{2}
+\end{align}
+which evinces that our localizing estimation will be judged to $A$ if and only if $P$ satisfies ${P_{low}} \le P \le {P_{high}}$. Here we limit $\varphi  \in [ - \frac{\pi }{2},\frac{\pi }{2}]$ to ensure ${P_{high}} \ge {P_{low}}$, if $\varphi  \notin [ - \frac{\pi }{2},\frac{\pi }{2}]$ then we can exchange the expression of ${P_{high}}$ and ${P_{low}}$ to maintain ${P_{high}} \ge {P_{low}}$. \textbf{---Rule 1)} Since the \textbf{equality(n)} holds for any $\varphi  \in \left( { - \pi ,\pi } \right]$, thus if fall into all possible intervals $[{P_{low}},{P_{high}}]$ then it will be classified into location $A$. The extreme condition is that while $\varphi  = \frac{\pi }{2}$, ${P_{high}} = {P_{low}}$, indicating that $P$ will be judged to $A$ if and only if $P = {P_{high}} = {P_{low}}$. That is to say our measurement must estimate the user��s location exactly at $r$, the real location. However, as error exists all the time in measurement and estimation, it is practically impossible to reach this extreme condition. Since that our previous analysis cannot be directly applied to realistic problems.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics [width = 7cm]{Figure4.pdf}
+%\vspace{-2 mm}
+\caption{Description.}
+\label{fig:4}
+%\vspace{-5 mm}
+\end{figure}
+
+However, noticing that practical indoor localization divides a room into many small square blocks and denotes the center of each block as a possible estimated location (\ie, if an estimation falls into one of these blocks, then the location we determine this user is the center of this block.) Therefore, it is not necessarily for us to consider all locations on the boundary of $E$ as analysis above. Instead we may solely concentrate on four blocks adjacent to our target block ($A$ is the center), and denote each center of these four block as $B, C, D, E,$ displayed in Figure 4. Under this circumstances, we will only have to meet four MLE constraints which relax our feasible solution from a single point $P$ to an interval. We will discuss it in detail with Figure 5.
+
+Figure 5 is similar to Figure 3 and we define parameters in accordance with Figure 4. Then based on previous analysis we can easily write the simplified MLE constraints of $B, C, D, E$:
+\begin{align}
+\left\{\begin{array}{l}
+{(x - \mu (\vec r))^2} \ge {(x - (\mu (\vec r) + \nabla \cos \phi ))^2}\\
+{(x - \mu (\vec r))^2} \ge {(x - (\mu (\vec r) + \nabla \sin \phi ))^2}\\
+{(x - \mu (\vec r))^2} \ge {(x - (\mu (\vec r) - \nabla \cos \phi ))^2}\\
+{(x - \mu (\vec r))^2} \ge {(x - (\mu (\vec r) - \nabla \sin \phi ))^2}
+\end{array}\right.
+\end{align}
+Therefore we can draw out Figure 6 in light of Figure 3. Then according to above analysis, it is clear that we can derive the feasible interval as
+%\begin{equation}
+%\begin{split}
+%&I = [ {\mu (\vec r) - \frac{{\nabla \min \left\{ {\cos \phi ,\sin \phi } \right\}}}{2},\mu (\vec r)+\\ &\frac{{\nabla \min \left\{ {\cos \phi ,\sin \phi } \right\}}}{2}} ]
+%\end{split}
+%\end{equation}
+\begin{equation}
+\begin{split}
+&I =\\ 
+&\left[ {\mu (\vec r) - \frac{{\nabla \min \left\{ {\cos \phi ,\sin \phi } \right\}}}{2},
+\mu (\vec r)+\frac{{\nabla \min \left\{ {\cos \phi ,\sin \phi } \right\}}}{2}} \right]
+ \end{split}
+ \end{equation} 
+where $\phi  \in \left[ { - \frac{\pi }{2},\frac{\pi }{2}} \right]$ and follows Rule 1. It demonstrates that a user is measured in block $A$ if and only if the estimation of him falls into $I$. Thus the reliability of our one-time measurement analysis of two-dimension physical space can be interpreted as:
+\begin{align}
+\begin{split}
+R &= \int_{{P_{low}}}^{{P_{high}}} {{f_r}(P)dP }\\
+ &=\int_{\mu (\vec r) - \frac{{\nabla \min \left\{ {\cos \phi ,\sin \phi } \right\}}}{2}}^{\mu (\vec r) + \frac{{\nabla \min \left\{ {\cos \phi ,\sin \phi } \right\}}}{2}} {\frac{1}{{\sqrt {2\pi } \sigma }}{e^{ - \frac{{{{(x - \mu (\vec r))}^2}}}{{2{\sigma ^2}}}}}dx}
+ \end{split}
+\end{align}
+
+\subsubsection{Imperfect Data}
+Then we extend our study to the influence of imperfect data in a two-dimension physical space. Recall in one-dimension analysis the imperfectness of received data is described as a deviation of line segment in the sample space. Therefore although our physical space has upgraded to two dimension, our sample space is still in one dimension as given above and what we receive are data of RSS, reflected directly in sample space. Thus we can imitate the method to derive error analysis similar as that of one-dimension situation.
+
+We still set our target region as  and consider $A$ abut to $B, C, D, E$ abut to $A$. Firstly it is reasonable to assume that the probability that a user is located at any location in $A$ to be identical, so the distribution of user's true location in  is a uniform one, whose probability distribution function is:
+\begin{align}
+p{f_A}(Q) = \left\{ \begin{array}{l}
+\frac{1}{S},\quad Q \in A\\
+0,\quad Q \notin A
+\end{array} \right.
+\end{align}
+where $A$ denotes the target region, $S$ represents its area and $Q$ means a user's true location. Note that every $Q$ in two-dimension physical space can be mapped to the one-dimension sample space according to Assumption 3. Now we set the user's true location in physical space is ${Q_0}$ and its corresponding point in sample space is $X_0$. Figure 7 illustrates the influence of imperfectness of data procured, which results in the deviation of feasible interval $I$ in sample space from its true range. As in Figure 7 we denote the right endpoint of true range as $X_1$ and deviated range as $X_2$, hence we can discover if a point $X_0$  falls into interval $(X_1,X_2)$, then it will be falsely estimated: $X_0$ should have been classified into region $B$ while because of the deviation it is determined to be in region $A$. The same goes for the left side of region $A$, the boundary point of $A$ and $C$. Given our situation, then we can derive the probability of localizing error as:
+\begin{align}
+P(err) &= \iint_A {{f_A}}(Q)P(err|X = {X_0})dxdy\\
+&= 2\iint_A {{f_A}}(Q)\int_{{X_1}}^{{X_2}} {\frac{1}{{\sqrt {2\pi } \sigma }}{e^{ - \frac{{{{(X - {X_0})}^2}}}{{2{\sigma ^2}}}}}} dXdxdy
+\end{align}
 
 \section{Low-cost data purchasing problem}
- In many situations, we could not get access to all the data for both the reason that the data has a cost and our budget is limited. In this section, we will define the problem of thedesigning of the effective mechanism to acquire the RSS information collected by the crowds. However, the mechanism have no means to know either the data is good enough for our localization or there will be a better one coming after. We implement the online machine learning algorithm in our mechanism.
-\subsection{Preliminaries and basic assumption}
-We first define the loss function according to the localization model above.
+In this section, we will abstractly define the problem of the designing of the effective mechanism to acquire the RSS information collected by the crowds. 
+
+\subsection{Preliminaries}
+We first give the concept of loss and regret. The loss function that reflects the data quality is defined in the space $H\times Z\to R$, where $H$ is the hypothesis class and $Z$ is the space of the objects. We expect the loss function to get its minimum value when the data is exactly the ideal data. In our setting, the hypothesis $h$ is the mean value and variance of RSS fingerprinting data, and the hypothesis class $H$ is our expected internal of mean value and  variance. 
 \begin{equation}
 f_t(h_t)=
 \end{equation}
- After we acquire the loss function, we give the defininition of the regret function.
-\[R(T)=\sum_{t=1}^Tf_t(h_t)-\min_{h^*\in H}\sum_{t=1}^Tf_t(h^*_t)\]
-where $h^*$ is the optimal choice, causing the least loss in our solution space $H$.
-We also make some assumptions for this problem
+ After we acquire the loss function, we give the concept of the regret function.
+\begin{equation}
+R(T)=\sum_{t=1}^Tf_t(h_t)-\min_{h^*\in H}\sum_{t=1}^Tf_t(h^*_t)
+\end{equation}
+where $h^*$ is the optimal choice, causing the least loss in our solution space $H$. The regret function reflexes how the data deviate from the desired value, the real mean and variance of RSS. We also make some assumptions for this problem
 \begin{enumerate}
-\item the agents may lie about the price but 
+\item the agents may lie about the cost
 \item 
-\item 
+\item the cost of each data  lies in an internal between  0 and $M$
 \end{enumerate}
+
+
 \subsection{Online Learning Algorithms}
-We will here use the classical Follow the Regularized Leader(FoRL) algorithm to work as the Online Algorithms. The FoRL has a upper bound of regret of $O(\sqrt{T})$, which ensures that the average regret tends to zero when.There are many kinds of other Online Algorithms which can be found in \ref{OLServey}, etc. The FoRL is described in \ref{}.
-\begin{algorithm}
-\end{algorithm}
-\subsection{Problem formulation}
-The problem can be described as follows. 
-\begin{enumerate}
-\item a sequence of data ${d_1,,,d_T}$ coming in time $1,,,,,T$ with each data possessing a posted price $c_t$, $c_t\in [0,M]$. 
-\item The mechanism post a price $p_t$ according to a probablity $g_t(p_t)$. 
-\item If the $p>c_t$ agent accepted the price, the mechanism get the loss function and send it back to the OLA and the mechanism will pay for the posted price $c_t$. If the agent rejected the price, the mechanism would send a null data to the OLA . 
-\end{enumerate}
+Online learning is a widely used learning paradign. The goal of online learning is to produce 
+Wel here use the classical Follow the Regularized Leader(FoReL) algorithm to work as the Online Algorithms. It has been proved that the FoReL has an upper bound of regret of $O(\sqrt{T})$, which ensures that the average regret tends to zero when $T$ goes to infinite. There are also many kinds of other Online Algorithms which can be found in \ref{OLServey}, etc. The FoReL is described as following. In each time $t$, the algorithm choose the smallest hypothesis in $H$ such that the sum of the loss function plus a regularizer $R$ get its infimum
+\begin{equation}
+h_t=arg\min_{h\in H}\sum_{i=1}^{t-1}f_i(w)+R(w)
+\end{equation}.
+
+
+
 \subsection{Importance Weighting technique}
-In tradational online learning problem, all the data will be used, and we can consider . In out low-cost purchasing problem, not all the loss function are used, and the estimation of loss is $E(\sum_{t=0}^T\delta_t f_t)=\sum_{t=0}^T q_t f_t$, where $\delta_t$ is the function showing whether the data is procured. Noticing that the definition of regret still includes all the loss, in order to get an unbiased estimator, we define
-\begin{numcases}{lf_t(h)=}
+
+In tradational online learning problem, all the data will be used to produce the total regret. In our low-cost purchasing problem, the mechanism do not get access to data and obtain a loss in each time $t$.  the estimation of loss is $E(\sum_{t=0}^T\delta_t f_t)=\sum_{t=0}^T q_t f_t$, where $\delta_t$ is the function showing whether the data is procured. However, the definition of regret still includes all the loss, whether it has been used or not.  In order to get an unbiased estimator, we define
+\begin{numcases}{\hat{f_t}(h)=}
   \frac{f_t(h_t)}{q_t} & if the is  \\
   0 & else 
-  \end{numcases}
+\end{numcases}
+.
+\subsection{Problem definition}
+We consider that the data collected through crowdsensing coming in a sequence of $d_1,,,d_T$, with each of them contains a cost $c_1,,,c_T$. We should design a mechanism that can choose whether we should buy the data or not. However, we have no means to know either the quality of data is good enough for localization or there will be a better one coming in the sequence. Under the framework of online machine learning, we formally define our problem as following
+\begin{definition}{}
+The mechanism $M$ works as fologiven a sequence of data ${d_1,,,d_T}$ coming in time $1,,,,,T$ with each data possessing a posted price $c_t$, $c_t\in [0,M]$. 
+\begin{enumerate}
+\item The mecahnism post a hypthesis $h_t$ from OLA
+\item The mechanism post a price $p_t$ according to a probablity distribution function $g_t(p_t)$.
+\item If the $p_t>c_t$ agent accepted the price, the mechanism send the loss function $f(h_t)/q_t$ back to the OLA and pay for the posted price $p_t$. If $p_t<c_t$the agent rejected the price, the mechanism send a null data to the OLA . 
+\end{enumerate}
+The mechanism outputs a hypothesis $\overline{h}\in H$
+\end{definition}
+And clearly, our kernel problem is to find the best distribution 
 \subsection{online batch to conversion}
-We give our final results by averaging every hypothesis $h_t$ acquired in each 
-Details will be added later.
-\section{The regret minimization senario}
+The meachanism and online learning algorithm produces a sequence of hypothesis $h_1,,,h_T$. The main goal of our algorithm is to get the best hypothesis $\overline{h}$, the mean value and variance of RSS, from the sequence. One simple aproach is to average every hypothesis $h_t$ acquired in each time $t$.
+\begin{equation}
+\overline{h}=\sum_{t=1}^n h_t
+\end{equation}
+It has been proved that under 
+
+\section{First step: a gentle assumption}
+In this section, we assume that the ......
+[To be completed by Shitao]
+
+\section{The main setting: regret minimization senario}
 In this senario, the mechanism has a fixed budget. The main purpose of the mechanism is to get a high accuracy of localization informaiton, which is consistent with our definition of loss function and regret. 
 \subsection{Estimate the upper bound of regret}
-We will first find the upper bound of the regret. \cite{} gives a quite well estimation as shown in the following lemma
+We will first find the upper bound of the regret. Under the importance weighting framework, it is given in\cite{} a quite well estimation in the following lemma
 \begin{Lemma}{}
 The regret bound of problem \ref{} using the OLA of FoRL is bounded by
 \[R(T)=\frac{\beta}{\eta}+E(\sum_{t=1}^T\frac{\Delta_{h_t,f_t}^2}{q_t})\]
 \end{Lemma}
-
+The $\Delta_{h_t,f_t}^2$ denotes the duality norm of $||\nabla f_t||$. The \ref{} is quite easy to be proved under our setting that the loss function $f_t$ is of strong convexity.
 \subsection{Derivation of the Regeret Minimization Problem}
 First consider the unconstrained problem. If $\overline{y}$ is the local minimum of the functional $J(y)$
 if $y$ is the local niminum of $J(y)$, then it holds that $\forall \hat{y}$ in a function space $V$
@@ -162,22 +332,25 @@ We must have
 \[-\frac{\alpha_t}{(1-F_t(c_t))^2}+\lambda x\geq 0\]
 hold on every where on $[c_t,M]$
 thus we obtain that
-\[F_t(c)=1-\sqrt{\frac{\alpha_t}{\lambda c}}\quad c\in(0,M)\]
+\[F_t(c)=1-\sqrt{\frac{\alpha_t}{\lambda c}}\quad c\in(c_t,M)\]
 Noticing that $F(x)$ is not continuous, according to Stieltjes Integral, we rewrite the constraint as following
 \[ \sum_{i=1}^n(\int_{c_i}^Mxf_i(x)dx+(1-F_i(M)M)\leq B\]
-According to the property of Lagarangian, we have
+The Stieltjes Integral here has its practical significance. Because we assume that the cost lies between $[0,M]$, in other word, the mechanism do not accept any price higher than $M$, thus for all posted price $c$ that are higher than $M$, the mechanism will only pay $M$ instead of $c$. According to the property of Lagarangian, we have
 \[\frac{\partial J}{\partial \lambda}=\sum_{i=1}^n(\int_{c_i}^Mxf_i(x)dx+(1-F_i(M)M)-B=0\]
 we can solve the $\lambda$ when we have the form of $F_t$
+According to some simple calculation
+\subsection{Analysis of the result}
+We first analysis the parameter $\lambda$ in the. regret bound of t
 
-\subsection{Interpreting of the result}
-The result shows that
 
+. 
 \section{The budget minimization senario}
 In this senario, the mechanism do not have a certain amount of budget, instead, an upper bound of regret $R_{min}$ is required as a constraint and the optimization target changes to the minimum of budget.
 \[\min E(B)\]
 \[s.t. R(T)\leq R_{min}\]
 \section{Experiments and Simulations}
-
+\subsection{A }
+\subsection{Adversarial input}
 
 
 \section{Conclusion and Future Work}\label{concandfuture}
